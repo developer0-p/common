@@ -1,3 +1,4 @@
+//re-export all staff from errors and middlewares
 export * from './errors/bad-request-error'
 export * from './errors/custom-error'
 export * from './errors/database-connectiion-error'
