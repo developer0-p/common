@@ -20,10 +20,8 @@ export const currentUser = (
   next: NextFunction
 ) => {
   console.log('sesion: ' + req.session?.jwt)
-  console.log('localstorage' + localStorage.getItem('userInfo'))
-  if (localStorage.getItem('userInfo')) {
-    console.log('hay cookie en el navegador')
-  } else if (!req.session?.jwt) {
+
+  if (!req.session?.jwt) {
     return next()
   }
 
