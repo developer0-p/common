@@ -20,13 +20,16 @@ export const currentUser = (
   next: NextFunction
 ) => {
   console.log('sesion: ' + req.session?.jwt)
-  if (!req.session?.jwt) {
+  console.log('localstorage' + localStorage.getItem('userInfo'))
+  if (localStorage.getItem('userInfo')) {
+    console.log('hay cookie en el navegador')
+  } else if (!req.session?.jwt) {
     return next()
   }
 
   try {
     const payload = jwt.verify(
-      req.session.jwt,
+      req.session?.jwt,
       process.env.JWT_KEY!
     ) as UserPayload
     req.currentUser = payload
